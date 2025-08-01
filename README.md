@@ -1,93 +1,50 @@
-Real-Time Monitoring System with Spring Boot, Kafka, Prometheus, and Grafana
-This project implements a real-time monitoring system to track user interactions on a web application. It utilizes Spring Boot for backend services, Apache Kafka for event streaming, Prometheus for monitoring, and Grafana for visualization.
+# Real-Time Monitoring System with Spring Boot, Kafka, Prometheus, and Grafana
 
-Project Overview
-The system is composed of four main components:
+I recently completed a project focused on creating a real-time monitoring system to track user interactions on a web application. The system leverages Spring Boot for backend services, Apache Kafka for event streaming, Prometheus for monitoring, and Grafana for visualization. Here's an overview of the workflow and key components of the project:
 
-Event Producer Service (Spring Boot)
+## Project Workflow
 
-Event Consumer Service (Spring Boot)
+1. **Spring Boot Event Producer Service**:
+    - Developed a Spring Boot application that captures user actions (e.g., button clicks) and produces events to a Kafka topic.
+    - This service ensures real-time recording of user interactions.
 
-Prometheus Monitoring
+2. **Spring Boot Event Consumer Service**:
+    - Created a Spring Boot application that consumes events from the Kafka topic.
+    - The consumer processes the events and exposes an API endpoint at `/metrics` on port `8082` for Prometheus to scrape.
 
-Grafana Visualization
+3. **Prometheus Monitoring**:
+    - Configured Prometheus to scrape the metrics from the consumer service every second.
+    - This setup enables real-time monitoring of the processed events.
 
-Together, these components enable real-time capture, processing, and visualization of user interaction events such as button clicks.
+4. **Grafana Visualization**:
+    - Connected Grafana to Prometheus as a data source.
+    - Designed dashboards in Grafana to visualize the metrics. The dashboards display real-time data on user interactions, specifically tracking "Enroll Now" and "Buy Now" button clicks.
 
-Project Workflow
-1. Event Producer Service
-A Spring Boot application captures user actions (e.g., button clicks) from the web interface.
+## Key Points
 
-Events are sent to a Kafka topic in real time.
+- **Event Producer Service**:
+    - Captures user actions and sends events to Kafka.
+    - Ensures real-time recording of interactions.
 
-2. Event Consumer Service
-A separate Spring Boot service subscribes to the Kafka topic.
+- **Event Consumer Service**:
+    - Subscribes to Kafka topics and processes events.
+    - Exposes metrics through an API endpoint for Prometheus.
 
-It processes incoming events and exposes metrics at the /metrics endpoint (port 8082) in a format compatible with Prometheus.
+- **Prometheus Configuration**:
+    - Scrapes metrics from the consumer service every second.
+    - Collects real-time data on processed events.
 
-3. Prometheus Monitoring
-Prometheus is configured to scrape metrics from the consumer service every second.
+- **Grafana Dashboards**:
+    - Visualizes metrics collected by Prometheus.
+    - Provides real-time insights into user interactions, including "Enroll Now" and "Buy Now" clicks.
 
-This enables near real-time collection and monitoring of event metrics.
+![Alt text](Producer_Service.png "Producer Service")
 
-4. Grafana Visualization
-Grafana connects to Prometheus as a data source.
+![Alt text](Consumer_Service.png "Producer Service")
 
-Dashboards are created in Grafana to visualize metrics such as "Enroll Now" and "Buy Now" button clicks in real time.
+![Alt text](Kafka_Zookeeper.png "Producer Service")
 
-Key Components
-Event Producer Service
-Captures front-end user interactions.
-
-Sends structured events to a Kafka topic.
-
-Ensures real-time logging of user behavior.
-
-Event Consumer Service
-Listens to the Kafka topic and processes incoming events.
-
-Exposes metrics via /metrics endpoint using Micrometer/Prometheus format.
-
-Prometheus Configuration
-Polls the consumer service's /metrics endpoint every second.
-
-Collects and stores time-series data related to user interaction events.
-
-Grafana Dashboards
-Visualizes collected metrics from Prometheus.
-
-Displays real-time analytics for specific user actions such as:
-
-"Enroll Now" button clicks
-
-"Buy Now" button clicks
-
-Technologies Used
-Java 17
-
-Spring Boot 3
-
-Apache Kafka
-
-Prometheus
+![Alt text](Prometheus.png "Producer Service")
 
 Grafana
-
-Docker (optional, for deployment)
-
-Getting Started
-To run the project locally, you will need:
-
-Java and Maven installed
-
-Kafka broker running (local or containerized)
-
-Prometheus and Grafana instances (can be run via Docker)
-
-You can then:
-
-Start the Event Producer and Consumer Spring Boot services.
-
-Configure Prometheus to scrape from the consumer service.
-
-Connect Grafana to Prometheus and import your dashboards.
+![Alt text](Grafana.png "Producer Service")
