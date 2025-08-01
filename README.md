@@ -1,6 +1,6 @@
 # Real-Time Monitoring System with Spring Boot, Kafka, Prometheus, and Grafana
 
-I recently completed a project focused on creating a real-time monitoring system to track user interactions on a web application. The system leverages Spring Boot for backend services, Apache Kafka for event streaming, Prometheus for monitoring, and Grafana for visualization. Here's an overview of the workflow and key components of the project:
+This project implements a real-time monitoring system to track user interactions on a web application. It utilizes Spring Boot for backend services, Apache Kafka for event streaming, Prometheus for monitoring, and Grafana for visualization.
 
 ## Project Workflow
 
